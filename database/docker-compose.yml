@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+   db:
+     image: mysql
+     ports:
+       - "3306:3306"
+     volumes:
+       - ./db/sql-files:/docker-entrypoint-initdb.d
+       - ./db/conf:/etc/mysql/conf.d
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: admin
+       MYSQL_DATABASE: classicmodels
+       MYSQL_USER: admin
+       MYSQL_PASSWORD: admin
